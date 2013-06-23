@@ -29,6 +29,10 @@ window.onload=function(){
 };
 var myApp = angular.module('myApp',[]);
 myApp.controller('Demo',function($scope) {  
-   $scope.hello='hello world';
-    $scope.bollo='pollo';
+   $scope.hello=[
+   'John',
+   'Jason',
+   'Jared'
+   ];
+    
 });

@@ -28,7 +28,7 @@ window.onload=function(){
     $rootScope.$apply();
 };
 var myApp = angular.module('myApp',[]);
-myApp.controller('Demo',function($rootScope) {  
-   $rootScope.hello='hello world';
-    $rootScope.bollo='pollo';
+myApp.controller('Demo',function($scope) {  
+   $scope.hello='hello world';
+    $scope.bollo='pollo';
 });

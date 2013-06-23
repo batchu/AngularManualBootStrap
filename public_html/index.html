@@ -11,10 +11,12 @@ and open the template in the editor.
     <script src="app.js"></script>
     </head>
     <body ng-controller='Demo'>
+        Name: <input ng-model='name' />
         <ul>
-            <li ng-repeat='name in hello'>{{name}}</li>
-            <div demo-greet>
+            <li ng-repeat='user in hello'>{{user}}</li>
+           
+            
+        </ul> <div demo-greet>
             </div>
-        </ul>
     </body>
 </html>

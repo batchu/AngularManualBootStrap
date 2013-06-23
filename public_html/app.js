@@ -29,6 +29,7 @@ window.onload=function(){
 };
 var myApp = angular.module('myApp',[]);
 myApp.controller('Demo',function($scope) {  
+    $scope.name="Prashanth";
    $scope.hello=[
    'John',
    'Jason',
@@ -39,9 +40,13 @@ myApp.controller('Demo',function($scope) {
 
 myApp.directive('demoGreet',function($parse) {  
 //Rarely compileFn is used. It has no access to scope. Used for compiling the template. Nothing else
+//All if not any DOM manipulation should be happening in the Directives. Directive is the glue between DOM and scope
 return{
     link: function LinkFn(scope,lElement,attrs){
-        lElement.text('Hello World');
+      
+        scope.$watch('name',function(name){
+              lElement.text('Hello World'+' '+name);
+        });
     }
 };
     

@@ -38,15 +38,31 @@ myApp.controller('Demo',function($scope) {
     
 });
 
+//$parse service allows you to 
+//You can read out of the scope using Watch and write using parse.
 myApp.directive('demoGreet',function($parse) {  
 //Rarely compileFn is used. It has no access to scope. Used for compiling the template. Nothing else
 //All if not any DOM manipulation should be happening in the Directives. Directive is the glue between DOM and scope
 return{
+    //restrict by Attribute or Class. This is if you want to use directive declaration as a class attribute in the div tag like <div class="demo-greet:name">
+    //You'll probably want to do this if you want to use bootstrap css. Bootstrap CSS class will give the design and the angular will give behavior.
+       restrict: 'AC',
     link: function LinkFn(scope,lElement,attrs){
-      
-        scope.$watch('name',function(name){
+        
+        scope.$watch(attrs.demoGreet,function(name){
               lElement.text('Hello World'+' '+name);
         });
+        lElement.bind('click',function(){
+            console.log('click');
+            
+             scope.$apply(function(){
+                 
+                 $parse(attrs.demoGreet).assign(scope,'abc');
+             });
+        }
+   
+);
+        
     }
 };
     

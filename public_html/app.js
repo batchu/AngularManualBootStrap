@@ -45,8 +45,12 @@ myApp.directive('demoGreet',function($parse) {
 //All if not any DOM manipulation should be happening in the Directives. Directive is the glue between DOM and scope
 return{
     //restrict by Attribute or Class. This is if you want to use directive declaration as a class attribute in the div tag like <div class="demo-greet:name">
-    //You'll probably want to do this if you want to use bootstrap css. Bootstrap CSS class will give the design and the angular will give behavior.
-       restrict: 'AC',
+    //You'll probably want to do this if you want to use bootstrap css. Bootstrap CSS class will give the design and the angular will give behavior. So just by putting a bootstrap class
+    //and writing a directive by its name in Angular, It not only renders the content, but it also imparts the angular behavior.
+    // You can also add E and do something else <demo-greet demo-greet="name"></demo-greet> IE likes this if you put XML namespace declaration on the top. It doesn't like elements
+    //that it is not familiar with. Declare all the elements ahead of tome. Document.createElement.myelement... in documentation. Fixed in IE9. This is not recommended by default
+    //in IE 8 as you need to do a pre-declaration.
+       restrict: 'ACE',
     link: function LinkFn(scope,lElement,attrs){
         
         scope.$watch(attrs.demoGreet,function(name){
